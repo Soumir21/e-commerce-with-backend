@@ -10,8 +10,9 @@ const register=async(req,res)=>{
         }
         const salt=await bcrypt.genSalt(10);
         const hashedpass=await bcrypt.hash(password,salt);
-        const userCreated=await User.create({email,username,phone,password:hashedpass});  
-        return res.status(200).json({user:userCreated})
+        const userCreated=await User.create({email,username,phone,password:hashedpass});
+        const token=await userCreated.getJWTToken();  
+        return res.status(200).json({message:"Successfully registered",user:userCreated,token:token})
     }catch(err){
         console.log(err);
     }   
@@ -29,15 +30,15 @@ const login=async(req,res)=>{
         else{
             const isPasswordMathced=await bcrypt.compare(password,doesEmailExist.password)
             if(isPasswordMathced){
-               return res.status(200).json({message:"Logged in successfully"})
+                const token=await doesEmailExist.getJWTToken();
+               return res.status(200).json({message:"Logged in successfully",token:token})
             }
             else{
                 return res.status(404).json({message:"Invalid credentials"})
             }
     }
     }catch(err){
-        return res.status(404).json({msg:err})
-        console.log(err);
+        next(err)
     }   
 }
 
