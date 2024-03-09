@@ -1,6 +1,6 @@
 const z=require("zod");
 const registerSchema=z.object({
-    userName:z
+    username:z
     .string({required_error:"name is required"})
     .trim()
     .min(3,{message:"minimum 3 charectors required"})
