@@ -1,8 +1,9 @@
 const express=require("express");
-const userController=require("../controller/productController");
+const productController=require("../controller/productController");
 const router=express.Router();
+const jwtMiddleware=require("../middleWare/jwtMiddleware")
 
 // router.route("/getproduct").get(userController.getProduct);
-router.route("/postproduct").post(userController.postProduct);
+router.route("/postproduct").post(jwtMiddleware,productController.postProduct);
 
 module.exports=router;
