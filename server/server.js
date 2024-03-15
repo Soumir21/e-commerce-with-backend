@@ -1,6 +1,7 @@
 const express=require("express");
 const userRouter=require("./Routers/userRouter");
 const productRouter=require("./Routers/useProduct");
+const paymentRouter=require("./Routers/paymentRouter");
 const app=express();
 const dbConenct=require("./utility/db");
 const cors=require("cors");
@@ -10,6 +11,7 @@ app.use(express.json());
 
 app.use("/api/auth",userRouter);
 app.use("/api/product",productRouter);
+app.use("/api/payment",paymentRouter);
 
 app.use(errorMiddleware)
 
