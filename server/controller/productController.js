@@ -25,5 +25,25 @@ const postProduct=async(req,res)=>{
 }
 
 
+const getProduct=async(req,res)=>{
+    try{
+        const email=req.user;
+        
+        const ifEmailExists=await Product.findOne({email:email});
+        if(ifEmailExists){
+           return res.status(200).json({message:"email exists",cart:ifEmailExists.cart});
+        }
+        else{
+            return  res.status(200).json({message:"Cart added",cart:[]});
 
-module.exports={postProduct};
+        }
+    }catch(err){
+        console.log(err);
+    }
+    
+   
+}
+
+
+
+module.exports={postProduct,getProduct};
