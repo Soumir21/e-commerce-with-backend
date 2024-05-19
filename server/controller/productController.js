@@ -7,7 +7,7 @@ const postProduct=async(req,res)=>{
         const {cart}=req.body;
         const email=req.user
         const ifEmailExists=await Product.findOne({email:email});
-        console.log(req.body) 
+       
         if(ifEmailExists){
            ifEmailExists.cart=cart;
            await ifEmailExists.save();
