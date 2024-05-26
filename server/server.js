@@ -17,7 +17,14 @@ app.use("/api/payment",paymentRouter);
 app.use("/api/order",orderRouter);
 app.use("/api/items",itemRouter)
 
+
 app.use(errorMiddleware)
+
+app.use(express.static(path.join(__dirname,'/client/build')))
+app.get("*",(req,res)=>{
+  res.sendFile(path.join(__dirname,'/client/build/index.html'))
+})
+
 
 dbConenct().then(app.listen(5000,()=>{
     console.log("started listeniong at 5000")
