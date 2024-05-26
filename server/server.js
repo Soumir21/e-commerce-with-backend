@@ -8,6 +8,7 @@ const app=express();
 const dbConenct=require("./utility/db");
 const cors=require("cors");
 const errorMiddleware=require("./middleWare/errorMidlleware");
+const path=require("path")
 app.use(cors());
 app.use(express.json());
 
