@@ -17,7 +17,7 @@ app.use("/api/product",productRouter);
 app.use("/api/payment",paymentRouter);
 app.use("/api/order",orderRouter);
 app.use("/api/items",itemRouter)
-
+const port = process.env.PORT || 4000;
 
 app.use(errorMiddleware)
 
@@ -27,6 +27,6 @@ app.get("*",(req,res)=>{
 })
 
 
-dbConenct().then(app.listen(5000,()=>{
+dbConenct().then(app.listen(port,()=>{
     console.log("started listeniong at 5000")
 }))
