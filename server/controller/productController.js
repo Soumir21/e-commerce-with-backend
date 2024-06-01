@@ -1,5 +1,5 @@
 const Product=require("../models/product");
-const bcrypt=require("bcrypt");
+const bcrypt=require("bcryptjs");
 
 
 const postProduct=async(req,res)=>{
