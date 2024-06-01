@@ -5,7 +5,7 @@ const afterPayment=async({order_id,payment_id})=>{
     const d=new Date();
     try{
         const formattedDate = d.toLocaleDateString('en-US')
-        const response=await fetch("http://localhost:5000/api/order/postorder",{
+        const response=await fetch("hhttps://e-commerce-with-backend-1.onrender.com/api/order/postorder",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json",

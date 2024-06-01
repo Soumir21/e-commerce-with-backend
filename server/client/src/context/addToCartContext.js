@@ -26,7 +26,7 @@ export const CartProvider=({children})=>{
    
     const addCartToBackEnd=async()=>{
         try{
-            const response=await fetch("http://localhost:5000/api/product/postproduct",{
+            const response=await fetch("https://e-commerce-with-backend-1.onrender.com/api/product/postproduct",{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json",
@@ -52,7 +52,7 @@ export const CartProvider=({children})=>{
         const outerFunction=async()=>{
             const getCart=async()=>{
                 try{
-                    const response=await fetch("http://localhost:5000/api/product/getproduct",{
+                    const response=await fetch("https://e-commerce-with-backend-1.onrender.com/api/product/getproduct",{
                         method:"GET",
                         headers:{
                             "Authorization":`Bearer ${token}`

@@ -7,7 +7,7 @@ export const OrderDetails = () => {
     useEffect(()=>{
         const findOrders=async()=>{
             try{
-                const response=await fetch("http://localhost:5000/api/order/getorder",{
+                const response=await fetch("https://e-commerce-with-backend-1.onrender.com/api/order/getorder",{
                     method:"GET",
                     headers:{
                         "Authorization":`Bearer ${token}`

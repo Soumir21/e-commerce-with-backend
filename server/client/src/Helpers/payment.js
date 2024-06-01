@@ -4,7 +4,7 @@ const payment=async(total_price)=>{
         console.log(total_price)
         const currency="INR";
         const receiptId="qwsaq1";
-        const response=await fetch("http://localhost:5000/api/payment/getproductid",{
+        const response=await fetch("https://e-commerce-with-backend-1.onrender.com/api/payment/getproductid",{
             method:"POST",
             body: JSON.stringify({
                 amount:total_price,
@@ -31,7 +31,7 @@ const payment=async(total_price)=>{
                const body={
                 ...response,
                }
-               const validateResponse=await fetch("http://localhost:5000/api/payment/validate",{
+               const validateResponse=await fetch("https://e-commerce-with-backend-1.onrender.com/api/payment/validate",{
                 method:"POST",
                 body: JSON.stringify(body),
                 headers:{
