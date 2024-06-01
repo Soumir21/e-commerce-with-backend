@@ -11,7 +11,7 @@ const errorMiddleware=require("./middleWare/errorMidlleware");
 const path=require("path")
 app.use(cors());
 app.use(express.json());
-
+require("dotenv").config();
 app.use("/api/auth",userRouter);
 app.use("/api/product",productRouter);
 app.use("/api/payment",paymentRouter);
