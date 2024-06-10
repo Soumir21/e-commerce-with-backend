@@ -8,27 +8,19 @@ import { useState } from "react";
 import { OrderDetails } from "./components/OrderDetails";
 import {userContext} from "./context/userContext";
 import { Transition } from "./styles/Transition";
+import { useNavigate } from 'react-router-dom';
 const Cart = () => {
   const {token}=useContext(userContext);
   const {cart} =useCartContext();
   const [showCart,setShowCart]=useState(false);
-    if(cart.length===0){
-      return <EmptyDiv>
-        <h3>No item in the cart</h3>
-        <div>
-          <NavLink to="/products">
-              <Button>Continue Shopping</Button>
-            </NavLink>
-        </div>
-      </EmptyDiv>
-    }
-    else{
+  const navigate=useNavigate();
       return <Wrapper>
       <div className="container">
         <div className="grid grid-two-cols">
           <div className="left-panel">
-            <button onClick={()=>setShowCart(false)}>My cart</button>
-            <button onClick={()=>setShowCart(true)}>My order</button>
+          <button onClick={()=>setShowCart(false)}>My cart</button>
+            {token?<button onClick={()=>setShowCart(true)}>My order</button>:null}
+            {token?<button onClick={()=>navigate("/logout")}>Logout</button>:null}
           </div>
           <div className="right-panel">
             {token? showCart ?  <OrderDetails />:<MyCart />:<MyCart />}
@@ -36,20 +28,10 @@ const Cart = () => {
         </div>
       </div>
     </Wrapper>;
-    }
+    
 
 };
-const EmptyDiv = styled.div`
-  display: grid;
-  place-items: center;
-  height: 50vh;
 
-  h3 {
-    font-size: 4.2rem;
-    text-transform: capitalize;
-    font-weight: 300;
-  }
-`;
 const Wrapper = styled.section`
   padding: 9rem 0;
   button {

@@ -207,14 +207,7 @@ const Nav = () => {
               onClick={() => setMenuIcon(false)}>
               Login
             </NavLink>
-          </li>:<li>
-            <NavLink
-              to="/logout"
-              className="navbar-link "
-              onClick={() => setMenuIcon(false)}>
-              Logout
-            </NavLink>
-          </li>}
+          </li>:null}
           <li>
             <NavLink to="/cart" className="navbar-link cart-trolley--link">
               <FiShoppingCart className="cart-trolley" />

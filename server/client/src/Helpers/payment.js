@@ -1,5 +1,5 @@
 import afterPayment from "./afterrPayment";
-const payment=async(total_price)=>{
+const payment=async(total_price,token,clearCart)=>{
     try{
         console.log(total_price)
         const currency="INR";
@@ -18,14 +18,14 @@ const payment=async(total_price)=>{
         })
 
         const order=await response.json();
-        console.log(order)
+       
         var options = {
             "key": "rzp_test_mSQoMYI2h4LRTQ", // Enter the Key ID generated from the Dashboard
             amount:total_price ,// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             currency,
-            "name": "Antique electronics", //your business name
+            "name": "A simple store", //your business name
             "description": "Test Transaction",
-            "image": "https://example.com/your_logo",
+            "image": "/images/newLogo.png",
             "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
             "handler": async function (response){
                const body={
@@ -40,12 +40,13 @@ const payment=async(total_price)=>{
                 }
                 )
                 const jsonRes=await validateResponse.json();
-                console.log(jsonRes);
+    
                 if(jsonRes.msg==="success"){
                     alert("payment successfull");
                     const order_id=jsonRes.order_id;
                     const payment_id=jsonRes.payment_id;
-                    await afterPayment({order_id,payment_id});
+                    await afterPayment({order_id,payment_id,token});
+                    clearCart();
                 }
                 else{
                     alert("why not successfull")
