@@ -1,7 +1,8 @@
 import afterPayment from "./afterrPayment";
-const payment=async(total_price,token,clearCart)=>{
+const payment=async({total_price,token,clearCart})=>{
+   
     try{
-        console.log(total_price)
+       
         const currency="INR";
         const receiptId="qwsaq1";
         const response=await fetch("https://e-commerce-with-backend-1.onrender.com/api/payment/getproductid",{
@@ -18,12 +19,12 @@ const payment=async(total_price,token,clearCart)=>{
         })
 
         const order=await response.json();
-       
+        
         var options = {
             "key": "rzp_test_mSQoMYI2h4LRTQ", // Enter the Key ID generated from the Dashboard
             amount:total_price ,// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             currency,
-            "name": "A simple store", //your business name
+            "name": "A Simple Store", //your business name
             "description": "Test Transaction",
             "image": "/images/newLogo.png",
             "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
@@ -40,7 +41,7 @@ const payment=async(total_price,token,clearCart)=>{
                 }
                 )
                 const jsonRes=await validateResponse.json();
-    
+               
                 if(jsonRes.msg==="success"){
                     alert("payment successfull");
                     const order_id=jsonRes.order_id;
@@ -80,5 +81,4 @@ const payment=async(total_price,token,clearCart)=>{
         console.log("error happened")
     }
 }
-
 export default payment;
