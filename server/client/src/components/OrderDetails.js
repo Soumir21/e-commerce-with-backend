@@ -25,7 +25,7 @@ export const OrderDetails = () => {
   return (
     <>
         <h2>My Orders</h2>
-        {orders.map((currOrder)=>{
+        {orders.length===0? <h4>No Order placed</h4>: orders.map((currOrder)=>{
             return( <SingleOrder order={currOrder}/>)
 
         })}

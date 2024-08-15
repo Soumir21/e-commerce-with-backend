@@ -27,8 +27,8 @@ const Footer = () => {
         <footer>
           <div className="container grid grid-four-column">
             <div className="footer-about">
-              <h3>Thapa Technical</h3>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. </p>
+              <h3>A Simple Store</h3>
+              <p>Happy To Provide </p>
             </div>
             <div className="footer-subscribe">
               <h3>Subscribe to get important updates</h3>
@@ -66,7 +66,7 @@ const Footer = () => {
             <hr />
             <div className="container grid grid-two-column ">
               <p>
-                @{new Date().getFullYear()} ThapaTechnical. All Rights Reserved
+                @{new Date().getFullYear()} A Simple Store. All Rights Reserved
               </p>
               <div className="try">
                 <p>PRIVACY POLICY</p>

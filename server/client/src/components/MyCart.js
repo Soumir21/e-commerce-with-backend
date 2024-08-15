@@ -8,9 +8,21 @@ import { useCartContext } from "../context/addToCartContext";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { userContext } from '../context/userContext';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 export const MyCart = () => {
   const { token } = useContext(userContext);
+  const navigate=useNavigate();
     const {cart,clearCart, total_price, shipping_Fee} =useCartContext();
+    const paymentButton=()=>{
+      if(token){
+        payment({total_price,token,clearCart})
+      }
+      else{
+        toast.warning("Please login first")
+        navigate("/login");
+      }
+    }
     if(cart.length===0){
       return <EmptyDiv>
         <h3>No item in the cart</h3>
@@ -64,7 +76,7 @@ export const MyCart = () => {
                    <p>Order Total</p>
                    <p><FormatPrice price={total_price+shipping_Fee} /></p>
                  </div>
-                 <Button onClick={()=>payment({total_price,token,clearCart})}style={{"backgroundColor": "rgb(98 84 243)"}}>Pay now</Button>
+                 <Button onClick={()=>paymentButton()} style={{"backgroundColor": "rgb(98 84 243)"}}>Pay now</Button>
              </div>
            </div>
         </>

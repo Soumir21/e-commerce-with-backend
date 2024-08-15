@@ -44,7 +44,7 @@ const cartReducer=(state,action)=>{
             console.log(action.payload);
             return{
                 ...state,
-                cart:[...action.payload]
+                cart:[...action.payload,...state.cart]
             }
         case("LOGOUT_CART"):
         console.log("called");

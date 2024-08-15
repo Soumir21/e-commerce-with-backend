@@ -73,9 +73,7 @@ export const CartProvider=({children})=>{
             dispatch({type:"LOGOUT_CART"})
            }
         }
-       outerFunction();
-        
-        
+       outerFunction();  
     },[token])
 
 
