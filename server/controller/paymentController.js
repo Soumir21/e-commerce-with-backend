@@ -8,6 +8,7 @@ const getOrder=async(req,res)=>{
         })
     
         const options=req.body;
+        console.log(options)
         const order=await razorpay.orders.create(options);
     
         if(!order){
